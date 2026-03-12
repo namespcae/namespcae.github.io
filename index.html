@@ -6,369 +6,351 @@
   <title>郭子杰 | Zijie Guo</title>
   <style>
     :root {
-      --pku-red: #8C0000;
-      --pku-dark: #1a1a2e;
-      --pku-blue: #1a3a5c;
-      --pku-gold: #c8a951;
-      --text-light: #f0f0f0;
-      --text-muted: #aaa;
-      --card-bg: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.1);
+      --bg:       #F1F5F9;
+      --surface:  #FFFFFF;
+      --primary:  #0D9488;
+      --primary-dim: rgba(13,148,136,0.1);
+      --border:   #E2E8F0;
+      --text:     #1E293B;
+      --muted:    #64748B;
+      --faint:    #94A3B8;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      background: var(--pku-dark);
-      color: var(--text-light);
-      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(26,26,46,0.92);
-      backdrop-filter: blur(12px);
+      position: fixed; top:0; width:100%; z-index:100;
+      background: rgba(241,245,249,0.88);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1000px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1.5rem; height: 56px;
+      max-width: 860px; margin:0 auto;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 1.5rem; height: 54px;
     }
-    .nav-brand { font-size: 1.1rem; font-weight: 700; color: var(--pku-gold); }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-brand {
+      font-size: .95rem; font-weight:700; color: var(--primary);
+      letter-spacing: .03em;
+    }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
     .nav-links a {
-      text-decoration: none; color: var(--text-muted); font-size: 0.9rem;
-      transition: color .2s;
+      text-decoration:none; color:var(--muted); font-size:.85rem;
+      transition:color .2s;
     }
-    .nav-links a:hover { color: var(--pku-gold); }
+    .nav-links a:hover { color:var(--primary); }
 
-    /* ── SECTIONS ── */
-    section { max-width: 1000px; margin: 0 auto; padding: 80px 1.5rem 40px; }
-    section:first-of-type { padding-top: 120px; }
+    /* ── LAYOUT ── */
+    main { max-width:860px; margin:0 auto; padding:0 1.5rem; }
+    section { padding: 88px 0 32px; }
+    section:first-of-type { padding-top: 118px; }
 
-    h2.section-title {
-      font-size: 1.6rem; font-weight: 700;
-      color: var(--pku-gold);
-      border-left: 4px solid var(--pku-red);
-      padding-left: 0.8rem;
-      margin-bottom: 2rem;
+    /* ── HEADINGS ── */
+    h2.sec-title {
+      font-size: 1rem; font-weight:700; letter-spacing:.12em;
+      text-transform: uppercase; color:var(--primary);
+      display: flex; align-items:center; gap:.6rem;
+      margin-bottom: 1.8rem;
+    }
+    h2.sec-title::after {
+      content:''; flex:1; height:1px; background:var(--border);
     }
 
     /* ── HERO ── */
-    #hero {
-      display: flex; align-items: center; gap: 3rem;
-      padding-top: 120px;
+    .hero {
+      display: flex; align-items:flex-start; gap:2.4rem;
+      padding-top: 118px; padding-bottom: 40px;
     }
-    .hero-avatar {
-      width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--pku-red), var(--pku-blue));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    .hero-initials {
+      width:80px; height:80px; border-radius:14px; flex-shrink:0;
+      background: var(--primary-dim);
+      border: 1.5px solid var(--primary);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.5rem; font-weight:800; color:var(--primary);
     }
-    .hero-text h1 { font-size: 2.4rem; font-weight: 800; }
-    .hero-text .hero-sub { color: var(--pku-gold); font-size: 1.1rem; margin: 0.3rem 0; }
-    .hero-text .hero-desc { color: var(--text-muted); font-size: 0.95rem; }
-    .hero-contacts { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
-    .contact-pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.85rem;
-      color: var(--text-muted); text-decoration: none; transition: border-color .2s;
+    .hero-info h1 {
+      font-size:2rem; font-weight:800; color:var(--text);
+      line-height:1.2;
     }
-    .contact-pill:hover { border-color: var(--pku-gold); color: var(--pku-gold); }
+    .hero-info h1 span {
+      font-size:1.15rem; font-weight:400; color:var(--muted); margin-left:.5rem;
+    }
+    .hero-sub { color:var(--primary); font-size:.9rem; margin:.35rem 0 .2rem; }
+    .hero-desc { color:var(--muted); font-size:.85rem; }
+    .hero-contacts { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+    .pill {
+      display:inline-flex; align-items:center; gap:.35rem;
+      padding:.25rem .8rem; border-radius:999px;
+      border:1px solid var(--border); background:var(--surface);
+      font-size:.8rem; color:var(--muted); text-decoration:none;
+      transition: border-color .2s, color .2s;
+    }
+    .pill:hover { border-color:var(--primary); color:var(--primary); }
 
     /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: 6px; bottom: 0;
-      width: 2px; background: linear-gradient(to bottom, var(--pku-red), var(--pku-blue));
+    .timeline { display:flex; flex-direction:column; gap:0; }
+    .tl-item {
+      display:grid; grid-template-columns:140px 1fr;
+      gap:0 1.6rem; padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .timeline-item { position: relative; margin-bottom: 2.2rem; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -2.44rem; top: 7px;
-      width: 12px; height: 12px; border-radius: 50%;
-      background: var(--pku-gold); border: 2px solid var(--pku-dark);
+    .tl-item:last-child { border-bottom:none; }
+    .tl-date { font-size:.78rem; color:var(--faint); padding-top:.2rem; line-height:1.5; }
+    .tl-body h3 { font-size:1rem; font-weight:700; color:var(--text); }
+    .tl-body .tl-deg { font-size:.85rem; color:var(--primary); margin:.15rem 0; }
+    .tl-body .tl-meta { font-size:.82rem; color:var(--muted); }
+    .tl-body .tl-courses { font-size:.78rem; color:var(--faint); margin-top:.4rem; line-height:1.6; }
+    .badge {
+      display:inline-block; font-size:.7rem; padding:.05rem .45rem;
+      border-radius:4px; border:1px solid var(--primary);
+      color:var(--primary); margin-left:.4rem; vertical-align:middle;
     }
-    .tl-date { font-size: 0.82rem; color: var(--pku-gold); margin-bottom: 0.2rem; }
-    .tl-school { font-size: 1.15rem; font-weight: 700; }
-    .tl-degree { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.15rem; }
-    .tl-badge {
-      display: inline-block; margin-top: 0.4rem;
-      background: rgba(140,0,0,0.25); border: 1px solid var(--pku-red);
-      border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.75rem; color: #e09090;
-    }
-    .tl-detail { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; }
-    .tl-detail span { color: var(--text-light); }
 
     /* ── PAPERS ── */
-    .paper-list { display: flex; flex-direction: column; gap: 1.2rem; }
-    .paper-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.2rem 1.4rem;
-      transition: border-color .2s;
+    .paper-list { display:flex; flex-direction:column; gap:1px; }
+    .paper {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; padding:1.2rem 1.4rem; margin-bottom:.8rem;
+      transition: box-shadow .2s;
     }
-    .paper-card:hover { border-color: var(--pku-gold); }
-    .paper-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .paper-title a { color: var(--text-light); text-decoration: none; }
-    .paper-title a:hover { color: var(--pku-gold); }
-    .paper-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem; }
-    .paper-venue { font-size: 0.82rem; color: var(--pku-gold); }
-    .paper-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
-    .paper-tag {
-      font-size: 0.72rem; border-radius: 4px; padding: 0.1rem 0.5rem;
-      border: 1px solid;
+    .paper:hover { box-shadow: 0 2px 16px rgba(13,148,136,.08); }
+    .paper-title { font-size:.97rem; font-weight:600; color:var(--text); }
+    .paper-title a { color:var(--text); text-decoration:none; border-bottom:1px solid transparent; }
+    .paper-title a:hover { border-color:var(--primary); color:var(--primary); }
+    .paper-authors { font-size:.82rem; color:var(--muted); margin:.2rem 0; }
+    .paper-venue { font-size:.8rem; color:var(--primary); }
+    .paper-tags { display:flex; gap:.4rem; margin-top:.55rem; flex-wrap:wrap; }
+    .tag {
+      font-size:.7rem; padding:.08rem .5rem; border-radius:4px;
+      border:1px solid; display:inline-block;
     }
-    .tag-journal { border-color: #4a9eda; color: #4a9eda; }
-    .tag-conf { border-color: #6aad8e; color: #6aad8e; }
-    .tag-first { border-color: var(--pku-gold); color: var(--pku-gold); }
+    .tag-j { border-color:#0D9488; color:#0D9488; }
+    .tag-c { border-color:#7C3AED; color:#7C3AED; }
+    .tag-f { border-color:#D97706; color:#D97706; }
 
     /* ── AWARDS ── */
-    .award-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; }
-    .award-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1rem 1.2rem;
-      display: flex; align-items: flex-start; gap: 0.8rem;
-      transition: border-color .2s;
+    .award-list { display:flex; flex-direction:column; gap:0; }
+    .award-row {
+      display:flex; align-items:baseline; gap:1rem;
+      padding:.85rem 0; border-bottom:1px solid var(--border);
     }
-    .award-card:hover { border-color: var(--pku-gold); }
-    .award-star { color: var(--pku-gold); font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-    .award-name { font-size: 0.92rem; font-weight: 600; }
-    .award-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .award-row:last-child { border-bottom:none; }
+    .award-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:var(--primary); flex-shrink:0; margin-top:.35rem;
+    }
+    .award-name { font-size:.92rem; flex:1; color:var(--text); }
+    .award-date { font-size:.78rem; color:var(--faint); white-space:nowrap; }
 
     /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.2rem; }
-    .skill-block {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.1rem 1.3rem;
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:.9rem; }
+    .skill-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; padding:1rem 1.2rem;
+      transition: box-shadow .2s;
     }
-    .skill-block h3 { font-size: 0.95rem; color: var(--pku-gold); margin-bottom: 0.5rem; }
-    .skill-block p { font-size: 0.87rem; color: var(--text-muted); }
+    .skill-card:hover { box-shadow: 0 2px 16px rgba(13,148,136,.07); }
+    .skill-card h3 { font-size:.82rem; font-weight:700; color:var(--primary); margin-bottom:.4rem; letter-spacing:.05em; text-transform:uppercase; }
+    .skill-card p { font-size:.84rem; color:var(--muted); line-height:1.65; }
+    .skill-card a { color:var(--primary); text-decoration:none; }
+    .skill-card a:hover { text-decoration:underline; }
 
     /* ── FOOTER ── */
     footer {
-      text-align: center; padding: 2.5rem 1rem;
-      color: var(--text-muted); font-size: 0.82rem;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem;
+      border-top:1px solid var(--border);
+      text-align:center; padding:2rem 1rem;
+      font-size:.78rem; color:var(--faint);
+      margin-top:2rem;
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      #hero { flex-direction: column; text-align: center; gap: 1.5rem; }
-      .hero-contacts { justify-content: center; }
-      .nav-links { gap: 1rem; }
+    @media(max-width:600px){
+      .hero { flex-direction:column; gap:1.2rem; padding-top:108px; }
+      .tl-item { grid-template-columns:1fr; gap:.2rem; }
+      .tl-date { font-size:.75rem; }
+      .nav-links { gap:.9rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-brand">郭子杰</span>
+    <span class="nav-brand">Zijie Guo</span>
     <ul class="nav-links">
-      <li><a href="#about">关于</a></li>
-      <li><a href="#education">教育</a></li>
-      <li><a href="#publications">论文</a></li>
-      <li><a href="#awards">奖项</a></li>
-      <li><a href="#skills">技能</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#skills">Skills</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="about">
-  <div id="hero">
-    <div class="hero-avatar">郭</div>
-    <div class="hero-text">
-      <h1>郭子杰 <span style="font-weight:400;font-size:1.4rem;color:var(--text-muted)">Zijie Guo</span></h1>
-      <div class="hero-sub">北京大学 软件与微电子学院 电子信息 硕士研究生</div>
-      <div class="hero-desc">南京邮电大学计算机科学与技术 · 专业排名 1/266 · 中共党员</div>
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="about">
+    <div class="hero-initials">郭</div>
+    <div class="hero-info">
+      <h1>郭子杰 <span>Zijie Guo</span></h1>
+      <div class="hero-sub">M.Eng. Student · Peking University, School of Software &amp; Microelectronics</div>
+      <div class="hero-desc">B.Eng. Computer Science, NJUPT · Rank 1 / 266 · CPC Member</div>
       <div class="hero-contacts">
-        <a class="contact-pill" href="mailto:zijieguo2003@163.com">
-          📧 zijieguo2003@163.com
-        </a>
-        <a class="contact-pill" href="tel:13512502325">
-          📱 13512502325
-        </a>
-        <a class="contact-pill" href="https://blog.csdn.net/zjjaibc" target="_blank">
-          ✍️ CSDN Blog
-        </a>
+        <a class="pill" href="mailto:zijieguo2003@163.com">✉ zijieguo2003@163.com</a>
+        <a class="pill" href="tel:13512502325">📱 135-1250-2325</a>
+        <a class="pill" href="https://blog.csdn.net/zjjaibc" target="_blank">✍ CSDN Blog</a>
+        <a class="pill" href="https://github.com/namespcae" target="_blank">⌥ GitHub</a>
       </div>
     </div>
   </div>
-</section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <h2 class="section-title">教育经历</h2>
-  <div class="timeline">
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="sec-title">Education</h2>
+    <div class="timeline">
 
-    <div class="timeline-item">
-      <div class="tl-date">2025年9月 — 至今</div>
-      <div class="tl-school">北京大学 <span class="tl-badge">双一流</span></div>
-      <div class="tl-degree">软件与微电子学院 · 电子信息 · 硕士</div>
+      <div class="tl-item">
+        <div class="tl-date">Sep 2025 — present</div>
+        <div class="tl-body">
+          <h3>北京大学 <span class="badge">双一流</span></h3>
+          <div class="tl-deg">M.Eng. in Electronic Information · School of Software &amp; Microelectronics</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Sep 2021 — Jul 2025</div>
+        <div class="tl-body">
+          <h3>南京邮电大学 <span class="badge">双一流</span></h3>
+          <div class="tl-deg">B.Eng. in Computer Science &amp; Technology</div>
+          <div class="tl-meta">Rank <strong>1 / 266</strong> (top 0.3%) &nbsp;·&nbsp; GPA <strong>4.63 / 5.0</strong> (96.3 / 100)</div>
+          <div class="tl-courses">Algorithm Analysis(100) · Computer Networks(100) · Database Systems(99) · Computer Organization(99) · Python &amp; AI(98) · Data Structures(98) · Software Engineering(97)</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Exchange</div>
+        <div class="tl-body">
+          <h3>南洋理工大学 (NTU)</h3>
+          <div class="tl-deg">Software Engineering · Grade: Distinction</div>
+          <div class="tl-meta">Reference letter from Prof. Zhiqi Shen</div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="tl-date">2021年9月 — 2025年7月</div>
-      <div class="tl-school">南京邮电大学 <span class="tl-badge">双一流</span></div>
-      <div class="tl-degree">计算机科学与技术 · 本科</div>
-      <div class="tl-detail">
-        专业排名：<span>1 / 266（前 0.3%）</span>&emsp;
-        GPA：<span>4.63 / 5.0（96.3 / 100）</span>
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2 class="sec-title">Publications</h2>
+    <div class="paper-list">
+
+      <div class="paper">
+        <div class="paper-title">
+          <a href="https://doi.org/10.3390/s24154779" target="_blank">
+            DDP-FedFV: A Dual-Decoupling Personalized Federated Learning Framework for Finger Vein Recognition
+          </a>
+        </div>
+        <div class="paper-authors"><strong>Guo Z</strong>, Guo J, Huang Y, et al.</div>
+        <div class="paper-venue">Sensors, 2024, 24(15): 4779</div>
+        <div class="paper-tags">
+          <span class="tag tag-j">Journal</span>
+          <span class="tag tag-f">First Author</span>
+        </div>
       </div>
-      <div class="tl-detail" style="margin-top:0.4rem;">
-        主修课程：算法分析与设计(100)、计算机通信与网络(100)、数据库系统(99)、计算机组成原理(99)、Python与AI应用(98)、数据结构(98)、软件工程(97)
+
+      <div class="paper">
+        <div class="paper-title">
+          Finger Vein Recognition Method Based on Self-Calibrated Convolution
+        </div>
+        <div class="paper-authors"><strong>Guo Z</strong>, Guo J, Huang Y, et al.</div>
+        <div class="paper-venue">42nd Chinese Control Conference (CCC 2023). IEEE, 2023: 7831–7836</div>
+        <div class="paper-tags">
+          <span class="tag tag-c">Conference</span>
+          <span class="tag tag-f">First Author</span>
+        </div>
       </div>
+
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="tl-date">交流访学</div>
-      <div class="tl-school">南洋理工大学 (NTU)</div>
-      <div class="tl-degree">Software Engineering 课程 · 成绩：Distinction</div>
-      <div class="tl-detail">获 Zhiqi Shen 教授推荐信</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <h2 class="section-title">学术论文</h2>
-  <div class="paper-list">
-
-    <div class="paper-card">
-      <div class="paper-title">
-        <a href="https://doi.org/10.3390/s24154779" target="_blank">
-          DDP-FedFV: A Dual-Decoupling Personalized Federated Learning Framework for Finger Vein Recognition
-        </a>
+  <!-- AWARDS -->
+  <section id="awards">
+    <h2 class="sec-title">Awards &amp; Honors</h2>
+    <div class="award-list">
+      <div class="award-row">
+        <div class="award-dot"></div>
+        <div class="award-name">国家奖学金 · National Scholarship</div>
+        <div class="award-date">Dec 2023</div>
       </div>
-      <div class="paper-authors"><strong>Guo Z</strong>, Guo J, Huang Y, et al.</div>
-      <div class="paper-venue">Sensors, 2024, 24(15): 4779</div>
-      <div class="paper-tags">
-        <span class="paper-tag tag-journal">Journal</span>
-        <span class="paper-tag tag-first">第一作者</span>
+      <div class="award-row">
+        <div class="award-dot"></div>
+        <div class="award-name">小米特等奖学金（全校仅 5 人）</div>
+        <div class="award-date">Dec 2024</div>
       </div>
-    </div>
-
-    <div class="paper-card">
-      <div class="paper-title">
-        Finger Vein Recognition Method Based on Self-Calibrated Convolution
+      <div class="award-row">
+        <div class="award-dot"></div>
+        <div class="award-name">MCM/ICM Finalist — Top 2% Globally</div>
+        <div class="award-date">Apr 2023</div>
       </div>
-      <div class="paper-authors"><strong>Guo Z</strong>, Guo J, Huang Y, et al.</div>
-      <div class="paper-venue">2023 42nd Chinese Control Conference (CCC). IEEE, 2023: 7831–7836</div>
-      <div class="paper-tags">
-        <span class="paper-tag tag-conf">Conference</span>
-        <span class="paper-tag tag-first">第一作者</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- AWARDS -->
-<section id="awards">
-  <h2 class="section-title">荣誉奖项</h2>
-  <div class="award-grid">
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
-        <div class="award-name">国家奖学金</div>
-        <div class="award-date">2023年12月</div>
-      </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
-        <div class="award-name">小米特等奖学金（全校仅5人）</div>
-        <div class="award-date">2024年12月</div>
-      </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
-        <div class="award-name">美国大学生数学建模竞赛 Finalist（全球前2%）</div>
-        <div class="award-date">2023年4月</div>
-      </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
+      <div class="award-row">
+        <div class="award-dot"></div>
         <div class="award-name">中国大学生计算机设计大赛 国家级二等奖</div>
-        <div class="award-date">2024年8月</div>
+        <div class="award-date">Aug 2024</div>
       </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
-        <div class="award-name">全国大学生英语竞赛C类 国家级二等奖</div>
-        <div class="award-date">2022年10月</div>
+      <div class="award-row">
+        <div class="award-dot"></div>
+        <div class="award-name">全国大学生英语竞赛 C 类 国家级二等奖</div>
+        <div class="award-date">Oct 2022</div>
       </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
-        <div class="award-name">江苏省第二十届高等数学竞赛本科一级A组一等奖</div>
-        <div class="award-date">2023年7月</div>
+      <div class="award-row">
+        <div class="award-dot"></div>
+        <div class="award-name">江苏省高等数学竞赛本科一级 A 组一等奖</div>
+        <div class="award-date">Jul 2023</div>
       </div>
-    </div>
-
-    <div class="award-card">
-      <div class="award-star">★</div>
-      <div>
+      <div class="award-row">
+        <div class="award-dot"></div>
         <div class="award-name">蓝桥杯江苏赛区 C/C++ 组一等奖</div>
-        <div class="award-date">2023年4月</div>
+        <div class="award-date">Apr 2023</div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <h2 class="section-title">技能 &amp; 其他</h2>
-  <div class="skills-grid">
-
-    <div class="skill-block">
-      <h3>🔢 数学</h3>
-      <p>线性代数(100)、概率论(100)、高等数学(100)、离散数学(99)。江苏省高等数学竞赛一等奖。</p>
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="sec-title">Skills &amp; More</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Mathematics</h3>
+        <p>线性代数(100) · 概率论(100) · 高等数学(100) · 离散数学(99)<br>江苏省数学竞赛一等奖</p>
+      </div>
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <p>C/C++ · Python · PyTorch<br>深度学习模型构建、训练与部署经验<br>蓝桥杯 C/C++ 江苏赛区一等奖</p>
+      </div>
+      <div class="skill-card">
+        <h3>English</h3>
+        <p>CET-4 &nbsp;589 &nbsp;·&nbsp; CET-6 &nbsp;549</p>
+      </div>
+      <div class="skill-card">
+        <h3>Blog</h3>
+        <p>CSDN 6k 粉丝 · 25w+ 访问 · 1k+ 收藏<br>C++、算法、ML、DL 笔记<br><a href="https://blog.csdn.net/zjjaibc" target="_blank">blog.csdn.net/zjjaibc</a></p>
+      </div>
     </div>
+  </section>
 
-    <div class="skill-block">
-      <h3>💻 编程</h3>
-      <p>熟悉 C/C++、Python；熟悉 PyTorch；具备深度学习模型构建、训练和部署经验。蓝桥杯 C/C++ 江苏赛区一等奖。</p>
-    </div>
+</main>
 
-    <div class="skill-block">
-      <h3>🌐 英语</h3>
-      <p>CET-4: 589 &nbsp;|&nbsp; CET-6: 549</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>✍️ 技术博客</h3>
-      <p>CSDN 6k 粉丝博主，25w+ 访问量，1k+ 收藏。分享 C++、算法、机器学习、深度学习笔记。<br>
-        <a href="https://blog.csdn.net/zjjaibc" target="_blank" style="color:var(--pku-gold)">blog.csdn.net/zjjaibc</a>
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © 2025 郭子杰 (Zijie Guo) &nbsp;·&nbsp; 北京大学软件与微电子学院
-</footer>
+<footer>© 2025 郭子杰 (Zijie Guo) · Peking University</footer>
 
 </body>
 </html>
