@@ -91,6 +91,18 @@
       color: #1a73e8; margin-left: 5px; vertical-align: middle;
     }
 
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item { padding: 16px 0; border-bottom: 1px solid #f5f5f5; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    .exp-org { font-size: .93rem; font-weight: 600; }
+    .exp-dates { font-size: .78rem; color: #aaa; white-space: nowrap; }
+    .exp-role { font-size: .82rem; color: #666; margin-bottom: 6px; }
+    .exp-detail { font-size: .84rem; color: #444; line-height: 1.7; margin: 0; padding-left: 1.2em; }
+    .exp-detail li { margin-bottom: 4px; }
+    .exp-tech { font-size: .78rem; color: #888; margin-top: 4px; }
+
     /* ── PUBLICATIONS ── */
     .pub-list { display: flex; flex-direction: column; gap: 20px; }
     .pub { display: grid; grid-template-columns: 36px 1fr; gap: 0 12px; align-items: start; }
@@ -141,6 +153,7 @@
       .hero { flex-direction: column; gap: 18px; padding-top: 36px; }
       .edu-item { grid-template-columns: 1fr; }
       .edu-dates { margin-bottom: 2px; }
+      .exp-header { flex-direction: column; }
       .pub { grid-template-columns: 1fr; }
       .pub-num { display: none; }
     }
@@ -153,6 +166,7 @@
     <span class="nav-brand">郭子杰</span>
     <ul class="nav-links">
       <li><a href="#education">教育经历</a></li>
+      <li><a href="#experience">研究与实习</a></li>
       <li><a href="#publications">学术论文</a></li>
       <li><a href="#awards">荣誉奖项</a></li>
       <li><a href="#skills">技能</a></li>
@@ -165,7 +179,7 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-photo">
-      <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.K1P40V6Bto5lYK4An8s5sAHaHa?w=187&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.8&pid=3.1&rm=2" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
+      <img src="avatar.png" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
     </div>
     <div>
       <div class="hero-name">郭子杰 <span class="hero-en">Zijie Guo</span></div>
@@ -190,12 +204,12 @@
         <div>
           <div class="edu-school">北京大学 <span class="tag-sm">985 · 双一流</span></div>
           <div class="edu-deg">软件与微电子学院 · 电子信息 · 硕士</div>
-          <div class="edu-courses">深度学习技术及应用 · 自然语言处理 · 大语言模型后训练实践</div>
+          <div class="edu-courses">大语言模型后训练实践 · 深度学习技术及应用</div>
         </div>
       </div>
 
       <div class="edu-item">
-        <div class="edu-dates">2021.09 — 2025.07</div>
+        <div class="edu-dates">2021.09 — 2025.06</div>
         <div>
           <div class="edu-school">南京邮电大学 <span class="tag-sm">双一流</span></div>
           <div class="edu-deg">计算机科学与技术 · 本科</div>
@@ -213,6 +227,64 @@
           <div class="edu-deg">软件工程课程 · 成绩：Distinction</div>
           <div class="edu-meta">获 Zhiqi Shen 教授推荐信</div>
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 研究与实习经历 -->
+  <div class="sec" id="experience">
+    <div class="sec-hd">研究与实习经历</div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-org">美团 · 大模型算法工程师（实习）</span>
+          <span class="exp-dates">2025.10 — 2026.01</span>
+        </div>
+        <div class="exp-role">LLM 后训练 · Agent 工程 · RAG &nbsp;|&nbsp; 北京</div>
+        <ul class="exp-detail">
+          <li><strong>后训练全流程：</strong>针对风控模型指令遵循弱、话术不专业的问题，对 QwQ-32B 进行 LoRA SFT + GRPO RL 训练；设计基于 pass@8 的分层数据筛选流水线，提取 4790 条带思维链 QA 对；最终模型在真实风控数据集准确率达 <strong>92.9%</strong>（基座 89.8%）</li>
+          <li><strong>Agent 工作流：</strong>面向客诉人工审核效率低的痛点，基于 Dify 搭建模块化审核流，引入 RAG 混合检索（BM25 + 稠密，α=0.3）并构建动态案例库；将审核准确率从 81% 提升至 <strong>95%+</strong></li>
+        </ul>
+        <div class="exp-tech">技术栈：LLaMA-Factory、Verl/GRPO、LoRA、Dify、Docker</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-org">北京大数据先进技术研究院 · 研究实习生</span>
+          <span class="exp-dates">2025.04 — 2025.08</span>
+        </div>
+        <div class="exp-role">领域大模型后训练 · 数据工程 &nbsp;|&nbsp; 北京</div>
+        <ul class="exp-detail">
+          <li><strong>训练策略：</strong>提出"增量预训练（CPT）+ 两阶段混合指令微调（DMT）"方案，通过法律/通用数据配比消融实验验证 DMT 优于顺序训练；最终模型立法评测集达 <strong>92.66 分</strong>（基座 48.13，提升 92.5%）</li>
+          <li><strong>数据 Pipeline：</strong>构建千万 Token 中英混合语料库，引入 MGA 方法利用 DeepSeek-V3 蒸馏多样化指令数据，设计 PDF/Word 到结构化语料的自动化清洗流水线</li>
+        </ul>
+        <div class="exp-tech">技术栈：LLaMA-Factory、DeepSpeed、LoRA、OpenCompass</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-org">北京大学 · 数据空间技术与系统研究中心</span>
+          <span class="exp-dates">2025.09 — 2026.01</span>
+        </div>
+        <div class="exp-role">Multi-Agent · Deep Research · 异构数据检索 &nbsp;|&nbsp; <a href="https://arxiv.org/abs/2510.01553" target="_blank">论文链接</a> · <a href="https://github.com/pkuNuclearGroup/IoDResearch" target="_blank">GitHub</a></div>
+        <ul class="exp-detail">
+          <li>提出 <strong>IoDResearch</strong> 框架（ICASSP 2026 Poster，CCF-B，第二作者），构建三层 IoD 异构图表示，设计 Planner-Worker-Reporter 三层 Multi-Agent 架构，支持多粒度检索、迭代检索与 Reflection 机制</li>
+          <li>在检索、QA 及报告生成三项任务上全面超越 NaiveRAG、LightRAG、DeepSearcher；构建首个 IoD DeepResearch Benchmark（500+ 文档，约 6M Tokens，1060 道评测题）</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-org">南京邮电大学 · 江苏省无线传感网重点实验室</span>
+          <span class="exp-dates">2023.06 — 2024.06</span>
+        </div>
+        <div class="exp-role">项目负责人（国家级大创）</div>
+        <ul class="exp-detail">
+          <li>针对联邦学习 Non-IID 数据导致客户端漂移的问题，提出双解耦个性化框架 <strong>DDP-FedFV</strong> 与 FedPWRR 聚合算法，显著提升异构环境下模型收敛稳定性</li>
+          <li>以<strong>第一作者</strong>发表一篇 SCI 论文（JCR Q2，IF=3.4）及 EI 会议论文，并申请软件著作权一项</li>
+        </ul>
       </div>
 
     </div>
@@ -259,13 +331,16 @@
         <div class="pub-num">[3]</div>
         <div>
           <div class="pub-title">
-            IoDResearch: Deep Research on Private Heterogeneous Data via the Internet of Data
+            <a href="https://arxiv.org/abs/2510.01553" target="_blank">
+              IoDResearch: Deep Research on Private Heterogeneous Data via the Internet of Data
+            </a>
           </div>
           <div class="pub-authors">Shi Z, <strong>Guo Z</strong>, Ma X, Huang G, Ma Y, Jing X.</div>
           <div class="pub-venue"><em>ICASSP 2026</em>（IEEE International Conference on Acoustics, Speech and Signal Processing）&nbsp;·&nbsp; CCF-B</div>
           <div class="pub-badges">
             <span class="badge badge-c">会议论文</span>
             <span class="badge badge-ccfb">CCF-B</span>
+            <span class="badge badge-fa">第二作者</span>
           </div>
         </div>
       </div>
@@ -279,38 +354,28 @@
     <div class="award-list">
       <div class="award-row">
         <span class="award-bullet">▸</span>
-        <span class="award-name">国家奖学金</span>
-        <span class="award-year">2023.12</span>
-      </div>
-      <div class="award-row">
-        <span class="award-bullet">▸</span>
         <span class="award-name">小米特等奖学金（全校仅 5 人）</span>
-        <span class="award-year">2024.12</span>
+        <span class="award-year">2024</span>
       </div>
       <div class="award-row">
         <span class="award-bullet">▸</span>
-        <span class="award-name">美国大学生数学建模竞赛 Finalist（特等奖提名，全球前 2%）</span>
-        <span class="award-year">2023.04</span>
+        <span class="award-name">国家奖学金</span>
+        <span class="award-year">2023</span>
+      </div>
+      <div class="award-row">
+        <span class="award-bullet">▸</span>
+        <span class="award-name">美国大学生数学建模竞赛 MCM Finalist（特等奖提名，全球前 2%）</span>
+        <span class="award-year">2023</span>
       </div>
       <div class="award-row">
         <span class="award-bullet">▸</span>
         <span class="award-name">中国大学生计算机设计大赛 国家级二等奖</span>
-        <span class="award-year">2024.08</span>
+        <span class="award-year">2024</span>
       </div>
       <div class="award-row">
         <span class="award-bullet">▸</span>
-        <span class="award-name">全国大学生英语竞赛 C 类 国家级二等奖</span>
-        <span class="award-year">2022.10</span>
-      </div>
-      <div class="award-row">
-        <span class="award-bullet">▸</span>
-        <span class="award-name">江苏省第二十届高等数学竞赛本科一级 A 组一等奖</span>
-        <span class="award-year">2023.07</span>
-      </div>
-      <div class="award-row">
-        <span class="award-bullet">▸</span>
-        <span class="award-name">第十四届蓝桥杯江苏赛区 C/C++ 组一等奖</span>
-        <span class="award-year">2023.04</span>
+        <span class="award-name">蓝桥杯 C/C++ 组 江苏省一等奖</span>
+        <span class="award-year">2023</span>
       </div>
     </div>
   </div>
@@ -320,20 +385,20 @@
     <div class="sec-hd">技能 &amp; 其他</div>
     <div class="skills-rows">
       <div class="skill-row">
-        <div class="skill-label">编程</div>
-        <div class="skill-val">熟悉 C/C++、Python；熟悉 PyTorch；具备深度学习模型构建、训练与部署实战经验</div>
+        <div class="skill-label">后训练</div>
+        <div class="skill-val">LoRA / SFT / DPO / GRPO / PPO；LLaMA-Factory、Verl、DeepSpeed</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Agent&amp;RAG</div>
+        <div class="skill-val">Multi-Agent 系统设计；RAG 混合检索管线；Dify 工作流；知识图谱</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">工程基础</div>
+        <div class="skill-val">Python、PyTorch、Docker、Linux、Git</div>
       </div>
       <div class="skill-row">
         <div class="skill-label">英语</div>
-        <div class="skill-val">四级 589 · 六级 549</div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-label">技术博客</div>
-        <div class="skill-val">CSDN 6k 粉丝，25w+ 访问量，1k+ 收藏 &nbsp;·&nbsp; <a href="https://blog.csdn.net/zjjaibc" target="_blank">blog.csdn.net/zjjaibc</a></div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-label">科研</div>
-        <div class="skill-val">国家级大学生创新训练计划（第一负责人，优秀结项）· 已发表论文 2 篇 · 申请软件著作权 1 项</div>
+        <div class="skill-val">CET-4: 589 · CET-6: 549；曾赴南洋理工大学修读 Software Engineering 课程，获 Distinction 评级</div>
       </div>
     </div>
   </div>
